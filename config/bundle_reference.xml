@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:bundle="http://www.joinbright.com/schema/platform/bundle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.joinbright.com/schema/platform/bundle http://www.joinbright.com/schema/platform/bundle/bundle.xsd  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+	<bundle:reference filter="platform_service_idname=sessionFactoryService" id="sessionFactory" targetName="org.hibernate.SessionFactory"/>
+
+	<!-- 引用事务管理器 -->
+	<bundle:reference filter="platform_service_idname=transactionManagerService" id="transactionManager" targetName="org.springframework.orm.hibernate3.HibernateTransactionManager"/>
+	<!-- 引用DAO -->
+	<bundle:reference filter="platform_service_idname=genericDaoService" id="genericDao" targetName="com.jb.dao.GenericDao"/>
+	<!-- 引用cacheDBDao -->
+	<bundle:reference filter="platform_service_idname=cacheDBDaoService" id="cacheDBDao" targetName="com.jb.cache.CacheDBDao"/>
+
+	<bundle:reference filter="platform_service_idname=syscodeSysCodeService" id="sysCodeService" targetName="com.jb.ui.service.EntityOperationServiceAdapter"/>
+
+	<bundle:reference filter="platform_service_idname=cacheManagerService" id="springCacheManager" targetName="org.springframework.cache.CacheManager"/>
+	<!-- 缓存管理器 -->
+	<bundle:reference filter="platform_service_idname=entityCacheManagerService" id="entityCacheManager" targetName="com.jb.springcache.EntityCacheManager"/>
+
+	<bundle:reference filter="platform_service_idname=jms_userMessageConverter" id="userMessageConverter" targetName="com.jb.jms.UserMessageConverter"/>
+	<bundle:reference filter="platform_service_idname=jms_mdJmsFactory" id="mdJmsFactory" targetName="org.apache.activemq.pool.PooledConnectionFactory"/>
+	<bundle:reference filter="platform_service_idname=model_singleBDService" id="singleBDService" targetName="com.jb.model.engine.SingleBDService"/>
+</beans>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><dynamic-module>
+	<web>
+		<!-- 静态的访问过滤 -->
+		<bundle-context-path>/equipment</bundle-context-path>
+		<servlet-extensions>/*.do</servlet-extensions>
+		<use-platform-component>false</use-platform-component>
+		<use-jsp> false</use-jsp>
+	</web>
+</dynamic-module>

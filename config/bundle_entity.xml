@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?><beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:bundle="http://www.joinbright.com/schema/platform/bundle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.joinbright.com/schema/platform/bundle http://www.joinbright.com/schema/platform/bundle/bundle.xsd  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+	<!-- hibernate实体 扫包方式配置 -->
+	<!-- 	
+	<bundle:entity id="myEntity" sessionFactory="sessionFactory">
+		<bundle:mappingFile>package com.jb.projectName.model
+		</bundle:mappingFile>
+	</bundle:entity>
+	-->
+	<!-- hibernate实体 配置文件方式配置-->
+	<!--  
+	<module:entity id="myEntity" sessionFactory="sessionFactory">
+		<module:mappingFile>classpath:com/*/myEntity.hbm.xml</module:mappingFile>
+	</module:entity>
+	
+	<bundle:entity id="entity" sessionFactory="sessionFactory">
+	</bundle:entity>
+	-->
+</beans>

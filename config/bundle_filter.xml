@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beans xmlns="http://www.springframework.org/schema/beans" xmlns:bundle="http://www.joinbright.com/schema/platform/bundle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.joinbright.com/schema/platform/bundle http://www.joinbright.com/schema/platform/bundle/bundle.xsd">
+<!-- 参照注释掉的内容进行过滤器配置 -->
+<!--
+	<bundle:servletfilter id="mfilter" >
+		<bundle:filter-name>mfilter</bundle:filter-name>
+		<bundle:filter-class>com.jb.usetest.ModuleFilter</bundle:filter-class>
+		<bundle:url-pattern>/usetest/*.jsp</bundle:url-pattern>
+	</bundle:servletfilter>
+	-->
+
+</beans>

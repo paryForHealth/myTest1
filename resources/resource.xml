@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<resource xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<dbss>
+		<!-- 根据线路架设方式查询假设步骤 -->
+		<sql id="selectStepByLineDataGuid">
+			<mysql>
+				select 
+					t1.guid,t1.jsfs,t1.step_cls_id,t1.step_text,t1.type,t1.service_order 
+				from us_app.tb_dev_xlsb_js t1,us_app.tb_sb_spdsb_xl t2 
+				where jsfs = t2.JSFS and t2.GUID=?
+				order by t1.service_order asc
+			</mysql>
+		</sql>
+		<!-- 根据类型ID获取表名 -->
+		<sql id="selectTableNameByClSID">
+			<mysql>
+					SELECT CONCAT(CLS_TABSCHEMA,'.',CLS_TABNAME) TABLENAME 
+					FROM US_SYS.TB_MODEL_CLS 
+					WHERE GUID=?
+			</mysql>
+		</sql>
+		<!--发布SQL -->
+		<sql id="publishServer">
+			<mysql>
+					UPDATE ${TABLENAME} SET SJZT ='0202201'
+					WHERE GUID=?
+			</mysql>
+		</sql>
+		<!--退役SQL-->
+		<sql id="retireServer">
+			<mysql>
+					UPDATE ${TABLENAME} SET YXZT ='0200105'
+					WHERE GUID=?
+			</mysql>
+		</sql>
+		<sql id="getEquOfDydj">
+			<mysql>
+				select GUID,SBMC,SBFL as SBLX,SBFLMC,DYDJ,DYDJMC as DYDJ_DSPVALUE,JGDY,JGDYMC as JGDY_DSPVALUE,TYRQ,YXZT,YXZTMC as YXZT_DSPVALUE,YWDW,YWDWMC as YWDW_DSPVALUE,SSZF,SJZT,SJZTMC AS SJZT_DSPVALUE,APPID,CLSID from us_app.tv_jgdy_sb where JGDY=? limit ?,?
+			</mysql>
+		</sql>
+		<sql id="getEquOfDydjTotal">
+			<mysql>
+				select count(guid) total from us_app.tv_jgdy_sb where JGDY=? 
+			</mysql>
+		</sql>
+		<!--根据类型查询子类关系-->
+		<sql id="queryClsRelation">
+			<mysql>
+				SELECT CLSID,CHILD_CLS CHILD,FKCOLUMN RELATIONCOLUMN FROM US_APP.TB_DEV_SB_RELA WHERE CLSID=?;
+			</mysql>
+		</sql>
+		<!-- 获取子类关联GUID -->
+		<sql id="getChlidReltaionGuid">
+			<mysql> SELECT GUID FROM ${TABLENAME} WHERE ${RELATIONCOLUMN} = ? </mysql>
+		</sql>
+		<!-- 获取类型表信息 -->
+		<sql id="getClsTableInfo">
+			<mysql>
+				select t1.sbflbm from us_app.TB_SB_GGCS_SBFL t1,us_app.tb_dev_sb_sblx t2
+                where t2.CLSID=? and t2.SBLX=t1.GUID
+			</mysql>
+		</sql>
+		<!-- 获取设备列表（查询模块） -->
+		<sql id="getEquList">
+			<mysql>
+				select sb.GUID,sb.SBMC,sb.SBFL as SBLX,sb.SBFLMC,sb.DYDJ,sb.DYDJMC as DYDJ_DSPVALUE,
+					sb.JGDY,sb.JGDYMC as JGDY_DSPVALUE,sb.TYRQ,sb.YXZT,sb.YXZTMC as YXZT_DSPVALUE,
+					dept.dept_name as ZCDWMC,
+					sb.YWDW,sb.YWDWMC as YWDW_DSPVALUE,sb.SSZF,sb.SJZT,sb.SJZTMC AS SJZT_DSPVALUE,
+					sb.APPID,sb.CLSID
+				from us_app.tv_jgdy_sb sb, us_sys.tb_sys_department dept
+				where sb.zcdw = dept.dept_id
+			</mysql>
+		</sql>
+		<!-- 获取登陆人单位信息 -->
+		<sql id="getDeptInfo">
+			<mysql>
+				SELECT
+					t1.*, t2.guid XTDW
+				FROM
+					us_sys.tb_sys_department t1,
+					us_sys.tb_sys_qyxx t2
+				WHERE
+					dept_id = ?
+				AND t1.DEPT_ID = t2.XTDW;
+			</mysql>
+		</sql>
+		<!-- 获取某顶级部门代维的所有企业用户 -->
+		<sql id="getMaintenanceDepts">
+			<mysql>
+				select * from us_sys.tb_sys_qyxx 
+				where dwdw = ?
+			</mysql>
+		</sql>
+		<!-- 获取站房信息 -->
+		<sql id="getStationInfoForCustomer">
+			<mysql>
+				SELECT REALCLS FROM US_APP.TV_STATION WHERE GUID = ?
+			</mysql>
+		</sql>
+		<!-- 获取站房信息 -->
+		<sql id="getEquipmentInfoForCustomer">
+			<mysql>
+				SELECT CLSID,APPID FROM US_APP.TV_JGDY_SB WHERE 1=1 ${FILTER}
+			</mysql>
+		</sql>
+	</dbss>
+</resource>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beans xmlns="http://www.springframework.org/schema/beans" xmlns:bundle="http://www.joinbright.com/schema/platform/bundle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.joinbright.com/schema/platform/bundle http://www.joinbright.com/schema/platform/bundle/bundle.xsd">
+
+  <!-- 参照注释掉的内容进行监听器配置 -->
+  <!--
+	<bundle:servletlistener id="mListener" >
+		<bundle:listener-class>com.jb.usetest.ModuleListener</bundle:listener-class>
+	</bundle:servletlistener>
+	-->
+
+</beans>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beans xmlns="http://www.springframework.org/schema/beans" xmlns:bundle="http://www.joinbright.com/schema/platform/bundle" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.joinbright.com/schema/platform/bundle http://www.joinbright.com/schema/platform/bundle/bundle.xsd">
+<!-- 参照注释掉的内容进行servlet的配置 -->
+<!--
+<bundle:servlet id="myServlet">
+		<bundle:servlet-name>myServlet</bundle:servlet-name>
+		<bundle:servlet-class>
+			com.jb.usetest.ModuleServlet
+		</bundle:servlet-class>
+	<bundle:servlet-mapping>/myServlet</bundle:servlet-mapping>
+		<bundle:init-param>
+			<bundle:param-name>targetBean</bundle:param-name>
+			<bundle:param-value>sessionServlet</bundle:param-value>
+		</bundle:init-param>		
+	</bundle:servlet>
+	 -->
+</beans>

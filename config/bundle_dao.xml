@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><beans xmlns="http://www.springframework.org/schema/beans" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	<!-- 引用对应的事务管理器并创建自身的事务管理切片 -->
+	<tx:annotation-driven order="1" proxy-target-class="true" transaction-manager="transactionManager"/>
+
+	<aop:config>
+		<aop:advisor advice-ref="txTestBizcAdvice" order="2" pointcut="execution(* com.jb.equipment.service..*.*(..))"/>
+	</aop:config>
+	<tx:advice id="txTestBizcAdvice" transaction-manager="transactionManager">
+		<tx:attributes>
+			<tx:method name="*" propagation="REQUIRED"/>
+		</tx:attributes>
+	</tx:advice>
+
+</beans>
